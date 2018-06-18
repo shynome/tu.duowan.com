@@ -1,0 +1,31 @@
+{
+  "name": "tu.duowan.com",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0",
+    "clear": "rm -rf dist",
+    "predev": "npm run clear",
+    "dev": "parcel src/index.html",
+    "prebuild": "npm run clear",
+    "build": "parcel build src/index.html",
+    "predocker": "docker build . -f ./docker/Dockerfile -t $npm_package_name:test",
+    "docker": "docker run --rm -ti -p 80:80 $npm_package_name:test",
+    "preversion": "npm t",
+    "postversion": "git push --follow-tags"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.3.18",
+    "@types/react-dom": "^16.0.6",
+    "@types/react-router": "^4.0.26",
+    "parcel-bundler": "^1.9.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router": "^4.3.1",
+    "typescript": "^2.9.2"
+  }
+}
