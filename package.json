@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "exit 0",
-    "clear": "rm -rf dist && .cache",
+    "clear": "rm -rf dist .cache",
     "predev": "npm run clear",
     "dev": "parcel src/index.html",
     "prebuild": "npm run clear",
