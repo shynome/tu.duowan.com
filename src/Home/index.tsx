@@ -1,7 +1,11 @@
 import { createElement as h, StatelessComponent } from "react";
+import { RouteComponentProps } from "react-router-dom";
 
-export const Home:StatelessComponent = (props)=>{
+export type Props = RouteComponentProps<any>
+
+export const Home:StatelessComponent<Props> = (props)=>{
+  
   return <div>
-    Home
+    Homexxx
   </div>
 }
