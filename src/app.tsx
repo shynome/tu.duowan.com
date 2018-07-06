@@ -1,6 +1,9 @@
 import ReactDOM from 'react-dom'
 import { createElement as h } from 'react'
+
+import { RouteBasic } from "./router";
+
 ReactDOM.render(
-  h('h1',{},'hello world'),
+  <RouteBasic />,
   document.getElementById('app'),
 )

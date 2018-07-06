@@ -6,6 +6,7 @@
     "module": "commonjs",
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
+    "jsxFactory": "h",
     "jsx": "react",
     "strictNullChecks": false
   }
