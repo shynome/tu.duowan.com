@@ -1,5 +1,5 @@
 import { createElement as h, StatelessComponent } from "react";
-import { Image } from "../Api";
+import { Image } from "../Api/image";
 import { Link } from "react-router-dom";
 
 export interface Props {
