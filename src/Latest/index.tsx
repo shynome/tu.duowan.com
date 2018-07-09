@@ -1,15 +1,35 @@
-import { createElement as h, StatelessComponent } from "react";
+import { createElement as h, Component, StatelessComponent } from "react";
 import { RouteComponentProps } from "react-router";
+import { Image } from "../Api/image";
 import { api } from "./service";
-import { AsyncComponent } from "@Components/Render";
+import { ImageList } from "../Components/ImageList";
 
-export type Props = RouteComponentProps<{ page:number }>
+export type Props = { page:number }
 
-export const Latest:StatelessComponent<Props> = (props)=>{
-  const { page } = props.match.params
-  api.page(page)
-  return <AsyncComponent>
-    hello world
-  </AsyncComponent>
+export type State = { data: Image[] }
+
+export class Latest extends Component< RouteComponentProps<Props>, State > {
+
+  state:State = { data:null }
+  
+  componentWillMount(){
+    this.getData()
+  }
+
+  async getData(){
+
+    const { page } = this.props.match.params
+
+    this.setState({ data: await api.page(page) })
+    
+  }
+  
+  render(){
+    if( !this.state.data ){
+      return <div>loading</div>
+    }else{
+      return <ImageList list={ this.state.data }></ImageList>
+    }
+  }
+
 }
-

@@ -1,25 +1,28 @@
 import { Route, Switch, Redirect } from "react-router";
 import { createElement as h, StatelessComponent } from "react";
 
+import { AsyncRoute } from "./Components/AsyncRoute";
+
 import { Header } from "./Header";
 import { NotFound } from "./NotFound";
-import { Home } from "./Home";
-import { JiongTu } from "./JiongTu";
-import { Gif } from "./Gif";
-import { Latest } from "./Latest";
 
-export const Routes:[ string, StatelessComponent<any> ][] = [
-  [ '/', Home ],
-  [ '/latest/:page', Latest ],
+export const Routes:[ string, any ][] = [
+
+  [ '/', ()=><Redirect to="/latest" /> ],
+
+  [ '/latest/:page', AsyncRoute(()=>import('./Latest').then(t=>t.Latest)) ],
   [ '/latest', ()=><Redirect to="/latest/0" /> ],
-  [ '/jiongtu/:page', JiongTu ],
+
+  [ '/jiongtu/:page', AsyncRoute(()=>import('./JiongTu').then(t=>t.JiongTu)) ],
   [ '/jiongtu', ()=><Redirect to="/jiongtu/0" /> ],
-  [ '/gif/:page', Gif ],
+
+  [ '/gif/:page', AsyncRoute(()=>import('./Gif').then(t=>t.Gif)) ],
   [ '/gif', ()=><Redirect to="/gif/0" /> ],
+
 ]
 
 export const Router:StatelessComponent<any> = (props)=>{
-  const RouteMaps = Routes.map( ([path, Component])=>{
+  const RouteMaps = Routes.map( ([path, Component ])=>{
     return <Route exact key={ path } path={ path } component={ Component } />
   } )
   return <div>
