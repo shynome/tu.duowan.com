@@ -3,14 +3,15 @@ import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import { api } from "./service";
 import { ImageDetail } from "../Api/image";
+import { ImageList } from "./ImageList";
 
-export type Props = { id:string }
+export type Props = RouteComponentProps<{ id:string }>
 
 export type State = { data: ImageDetail  }
 
-export class Article extends Component< RouteComponentProps<Props>, State > {
+export class Article extends Component< Props, State > {
 
-  state:State = { data:null }
+  state:State = { data:null, }
   
   componentWillMount(){
     this.getData()
@@ -19,20 +20,28 @@ export class Article extends Component< RouteComponentProps<Props>, State > {
   async getData(){
 
     const { id } = this.props.match.params
+    
+    console.log(this.props.match.params.id)
 
     this.setState({ data: await api.detail(id) })
     
   }
   
   render(){
-    if( !this.state.data ){ 
+
+    console.log(this.props.match.params.id)
+    
+    const { data } = this.state
+    if( !data ){ 
       return <div>loading</div>
     }else{
       return <div>
         <button onClick={ ()=>this.props.history.goBack() }>back</button>
-        <div>{JSON.stringify(this.state.data)}</div>
+        <h4>{ data.gallery_title }</h4>
+        <ImageList list={ data.picInfo } />
       </div>
     }
   }
 
 }
+
