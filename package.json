@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "exit 0",
+    "test": "npm run build",
     "clear": "rm -rf dist .cache",
     "predev": "npm run clear",
     "dev": "parcel src/index.html",
