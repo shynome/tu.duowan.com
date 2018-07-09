@@ -35,10 +35,11 @@ export class Article extends Component< Props, State > {
     if( !data ){ 
       return <div>loading</div>
     }else{
-      return <div>
+      return <div style={ { margin: '3vw' } }>
         <button onClick={ ()=>this.props.history.goBack() }>back</button>
         <h4>{ data.gallery_title }</h4>
         <ImageList list={ data.picInfo } />
+        <button onClick={ ()=>this.props.history.goBack() }>back</button>
       </div>
     }
   }

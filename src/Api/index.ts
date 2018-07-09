@@ -17,7 +17,7 @@ export class Api {
     
   }
   
-  async page(num=1, size=10):Promise<ImageList>{
+  async page(num='1', size=10):Promise<ImageList>{
     return fetchJsonp(`${this.baseurl}&page=${num}&pageSize=${size}`).then(t=>t.json())
   }
   

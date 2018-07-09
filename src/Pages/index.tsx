@@ -1,6 +1,6 @@
 import { Page } from "./Page";
 import { createElement as h, StatelessComponent } from "react";
-import { RouteComponentProps, Redirect } from "react-router";
+import { RouteComponentProps, Redirect, } from "react-router";
 import { Api } from "../Api";
 import { Name2Tag } from "./data";
 import { Nav } from "./Nav";
@@ -16,7 +16,7 @@ export const Pages:StatelessComponent<RouteComponentProps<any>> = (props)=>{
     <header>
       <Nav />
     </header>
-    <Page { ...props } api={ new Api(`http://tu.duowan.com/index.php?r=api/ajaxgallerys&tag=${tag}`) }></Page>
+    <Page key={ props.match.url } { ...props } api={ new Api(`http://tu.duowan.com/index.php?r=api/ajaxgallerys&tag=${tag}`) }></Page>
   </div>
 
 }

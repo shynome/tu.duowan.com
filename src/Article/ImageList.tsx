@@ -3,7 +3,7 @@ import { Pic } from "../Api/image";
 
 export const ImageList:StatelessComponent<{list:Pic[]}> = (props)=>{
   let list = props.list.map(pic=>{
-    return <li key={ pic.pic_id }>
+    return <li key={ pic.pic_id } style={{margin:'0 0 3vw'}}>
       {/* {
         pic.mp4_url
         ? <div className="video">
@@ -13,7 +13,7 @@ export const ImageList:StatelessComponent<{list:Pic[]}> = (props)=>{
           <img src={pic.source} />
         </div>
       } */}
-      <div className="img">
+      <div className="img" >
         <img src={pic.source} style={{maxWidth:'100%'}} />
       </div>
       <div className="add_intro">{ pic.add_intro }</div>
