@@ -1,11 +1,8 @@
 import { createElement as h, StatelessComponent } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, Redirect } from "react-router";
 
 export type Props = RouteComponentProps<any>
 
 export const Home:StatelessComponent<Props> = (props)=>{
-  
-  return <div>
-    Homexxx
-  </div>
+  return <Redirect to="/latest" />
 }
