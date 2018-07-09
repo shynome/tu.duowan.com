@@ -16,7 +16,7 @@ export const Pages:StatelessComponent<RouteComponentProps<any>> = (props)=>{
     <header>
       <Nav />
     </header>
-    <Page key={ props.match.url } { ...props } api={ new Api(`http://tu.duowan.com/index.php?r=api/ajaxgallerys&tag=${tag}`) }></Page>
+    <Page key={ props.match.url } { ...props } api={ new Api(`//tu.duowan.com/index.php?r=api/ajaxgallerys&tag=${tag}`) }></Page>
   </div>
 
 }
