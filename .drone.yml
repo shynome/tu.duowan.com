@@ -10,7 +10,7 @@ pipeline:
     restore: true
 
   build:
-    image: shynome/alpine-drone-ci
+    image: node:carbon
     commands:
     - npm i --ignore-scripts
     - npm run build -- --log-level 1
