@@ -12,7 +12,7 @@ pipeline:
   build:
     image: shynome/alpine-drone-ci
     commands:
-    - npm i
+    - npm i --ignore-scripts
     - npm run build -- --log-level 1
     - npm run set_tags
     
