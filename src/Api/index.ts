@@ -14,11 +14,12 @@ export class Api {
   }
   
   async page(num=1, size=10):Promise<Image[]>{
-    return 
+    return fetchJsonp(this.baseurl).then(r=>r.json())
   }
   
   async detail(id:string):Promise<any> {
-    
+    debugger
+    return fetchJsonp(this.baseurl).then(r=>r.json())
   }
   
 }

@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "checkJs": true,
     "strict": true,
     "target": "esnext",
     "module": "commonjs",
@@ -8,6 +7,10 @@
     "allowSyntheticDefaultImports": true,
     "jsxFactory": "h",
     "jsx": "react",
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "baseUrl": ".",
+    "paths": {
+      "@Components/*": [ "./Components/*" ]
+    }
   }
 }

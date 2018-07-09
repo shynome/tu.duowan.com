@@ -18,15 +18,6 @@ export const Routes:[ string, StatelessComponent<any> ][] = [
   [ '/gif', ()=><Redirect to="/gif/0" /> ],
 ]
 
-import { createBrowserHistory } from "history";
-import qhistory from "qhistory";
-import { stringify, parse } from "qs";
-export const history = qhistory(
-  createBrowserHistory({}),
-  stringify,
-  parse 
-)
-
 export const Router:StatelessComponent<any> = (props)=>{
   const RouteMaps = Routes.map( ([path, Component])=>{
     return <Route exact key={ path } path={ path } component={ Component } />
