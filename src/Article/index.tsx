@@ -1,5 +1,6 @@
 import { createElement as h, Component, StatelessComponent } from "react";
 import { RouteComponentProps } from "react-router";
+import { Link } from "react-router-dom";
 import { api } from "./service";
 import { ImageDetail } from "../Api/image";
 
@@ -27,7 +28,10 @@ export class Article extends Component< RouteComponentProps<Props>, State > {
     if( !this.state.data ){ 
       return <div>loading</div>
     }else{
-      return <div>{JSON.stringify(this.state.data)}</div>
+      return <div>
+        <button onClick={ ()=>this.props.history.goBack() }>back</button>
+        <div>{JSON.stringify(this.state.data)}</div>
+      </div>
     }
   }
 

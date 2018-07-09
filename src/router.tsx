@@ -3,8 +3,8 @@ import { createElement as h, StatelessComponent } from "react";
 
 import { AsyncRoute } from "./Components/AsyncRoute";
 
-import { Header } from "./Header";
 import { NotFound } from "./NotFound";
+import { Article } from "./Article";
 const Page = AsyncRoute(()=>import('./Pages').then(t=>t.Pages))
 
 export const Routes:[ string, any ][] = [
@@ -25,7 +25,7 @@ export const Routes:[ string, any ][] = [
   [ '/tucao/:page', Page ],
   [ '/tucao', ()=><Redirect to="/tucao/1" /> ],
 
-  [ '/article/:id', Page ],
+  [ '/article/:id', Article ],
   [ '/article/', ()=><Redirect to="/" /> ],
 
 ]
@@ -35,7 +35,6 @@ export const Router:StatelessComponent<any> = (props)=>{
     return <Route exact key={ path } path={ path } component={ Component } />
   } )
   return <div>
-    <Header />
     <Switch>
       { RouteMaps }
       <Route component={ NotFound } />
