@@ -13,7 +13,8 @@
     "predocker": "docker build . -f ./docker/Dockerfile -t $npm_package_name:test",
     "docker": "docker run --rm -ti -p 80:80 $npm_package_name:test",
     "preversion": "npm t",
-    "postversion": "git push --follow-tags"
+    "postversion": "git push --follow-tags",
+    "set_tags": "echo \"$(node -pe \"process.env.npm_package_version.split('.').map((v,i,a)=>a.slice(0,i+1).join('.')).join(',')\"),latest\">.tags"
   },
   "keywords": [],
   "author": "",
