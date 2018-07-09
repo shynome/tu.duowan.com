@@ -1,10 +1,8 @@
 import { createElement as h, StatelessComponent } from "react";
+import { api } from "./service";
 import { RouteComponentProps } from "react-router";
+import { Page } from "../Components/Page";
 
-export type Props = RouteComponentProps<{ page: number }>
-
-export const JiongTu:StatelessComponent<Props> = (props)=>{
-  return <div>
-    GaoXiao
-  </div>
+export const JiongTu = (props:RouteComponentProps<any>)=>{
+  return <Page { ...props } api={ api }></Page>
 }

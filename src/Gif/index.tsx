@@ -1,11 +1,8 @@
 import { createElement as h, StatelessComponent } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { api } from "./service";
+import { RouteComponentProps } from "react-router";
+import { Page } from "../Components/Page";
 
-export type Props = RouteComponentProps<{ page:number }>
-
-export const Gif:StatelessComponent<Props> = (props)=>{
-  console.log( props.match.params.page )  
-  return <div>
-    BxGif
-  </div>
+export const Gif = (props:RouteComponentProps<any>)=>{
+  return <Page { ...props } api={ api }></Page>
 }

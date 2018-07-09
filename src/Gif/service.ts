@@ -1,2 +1,3 @@
 import { Api } from "../Api";
-const url = `http://tu.duowan.com/index.php?r=api/ajaxgallerys&page=2&pageSize=10&tag=9031`
+
+export const api = new Api(`http://tu.duowan.com/index.php?r=api/ajaxgallerys&tag=9031`)
