@@ -8,9 +8,9 @@ export interface Props {
 
 export const ImageList:StatelessComponent<Props> = (props) =>{
   let list = props.list.map( image=>{
-    return <li>
+    return <li key={ image.gallery_id }>
       <Link to={ `/detail/${image.gallery_id}` }>
-        <div className="image"><img src={ image.cover_url } alt=""/></div>
+        <div className="image" style={{ backgroundImage: `url(${image.cover_url})` }}></div>
         <div className="title">{ image.title }</div>
         <div className="info">
           <span className="comment_count">{ image.comment_count }</span>
@@ -19,7 +19,7 @@ export const ImageList:StatelessComponent<Props> = (props) =>{
       </Link>
     </li>
   })
-  return <ul>
+  return <ul className="image_list">
     { list }
   </ul>
 }

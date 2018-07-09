@@ -1,3 +1,7 @@
+a{
+  text-decoration: none;
+  color: #000;
+}
 
 header {
   nav {
@@ -6,8 +10,6 @@ header {
     display: block;
     a {
       display: inline-block;
-      text-decoration: none;
-      color: red;
       padding: 5px 10px;
       margin: 0 5px;
       box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.7);
@@ -16,6 +18,38 @@ header {
       }
       &.active{
         background: yellow;
+      }
+    }
+  }
+}
+
+ul.image_list{
+  list-style: none;
+  margin: 0;
+  padding: 0 0 1px;
+  li{
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    &>a{
+      display: block;
+      padding: 10px;
+    }
+    .image{
+      height: 40vw;
+      width: 40vw;
+      margin: 0 auto;
+      background: cover center;
+    }
+    .title{
+      font-size: 14px;
+    }
+    .info{
+      text-align: right;
+      font-size: 10px;
+      color: rgb(161, 161, 161);
+      .comment_count{
+        float: left;
       }
     }
   }

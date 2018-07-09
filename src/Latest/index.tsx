@@ -1,12 +1,11 @@
 import { createElement as h, Component, StatelessComponent } from "react";
 import { RouteComponentProps } from "react-router";
-import { Image } from "../Api/image";
-import { api } from "./service";
+import { api, ImageList as ImageListType } from "./service";
 import { ImageList } from "../Components/ImageList";
 
 export type Props = { page:number }
 
-export type State = { data: Image[] }
+export type State = { data: ImageListType }
 
 export class Latest extends Component< RouteComponentProps<Props>, State > {
 
@@ -25,10 +24,10 @@ export class Latest extends Component< RouteComponentProps<Props>, State > {
   }
   
   render(){
-    if( !this.state.data ){
+    if( !this.state.data ){ 
       return <div>loading</div>
     }else{
-      return <ImageList list={ this.state.data }></ImageList>
+      return <ImageList list={ this.state.data.gallerys }></ImageList>
     }
   }
 
