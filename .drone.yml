@@ -9,10 +9,18 @@ pipeline:
     <<: *cache
     restore: true
 
-  build:
+  install:
     image: node:carbon
     commands:
     - npm i
+  rebuild-node-cache:
+    <<: *cache
+    mount: [ './node_modules' ]
+    rebuild: true
+
+  build:
+    image: node:carbon
+    commands:
     - npm run build -- --log-level 1
     - npm run set_tags
     
