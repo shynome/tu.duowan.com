@@ -5,22 +5,28 @@ import { AsyncRoute } from "./Components/AsyncRoute";
 
 import { Header } from "./Header";
 import { NotFound } from "./NotFound";
+const Page = AsyncRoute(()=>import('./Pages').then(t=>t.Pages))
 
 export const Routes:[ string, any ][] = [
 
   [ '/', ()=><Redirect to="/latest" /> ],
 
-  [ '/latest/:page', AsyncRoute(()=>import('./Latest').then(t=>t.Latest)) ],
+  [ '/404', NotFound ],
+
+  [ '/latest/:page', Page ],
   [ '/latest', ()=><Redirect to="/latest/1" /> ],
 
-  [ '/jiongtu/:page', AsyncRoute(()=>import('./JiongTu').then(t=>t.JiongTu)) ],
+  [ '/jiongtu/:page',Page ],
   [ '/jiongtu', ()=><Redirect to="/jiongtu/1" /> ],
 
-  [ '/gif/:page', AsyncRoute(()=>import('./Gif').then(t=>t.Gif)) ],
+  [ '/gif/:page', Page ],
   [ '/gif', ()=><Redirect to="/gif/1" /> ],
 
-  [ '/tucao/:page', AsyncRoute(()=>import('./TuCao').then(t=>t.TuCao)) ],
+  [ '/tucao/:page', Page ],
   [ '/tucao', ()=><Redirect to="/tucao/1" /> ],
+
+  [ '/article/:id', Page ],
+  [ '/article/', ()=><Redirect to="/" /> ],
 
 ]
 

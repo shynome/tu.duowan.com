@@ -22,9 +22,7 @@ export class Api {
   }
   
   async detail(id:string):Promise<any> {
-    return [
-
-    ]
+    return fetchJsonp(`${this.baseurl}&gid=137237`).then(t=>t.json())
   }
   
 }
