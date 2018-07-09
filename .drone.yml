@@ -13,7 +13,7 @@ pipeline:
     image: shynome/alpine-drone-ci
     commands:
     - deploy build node --install-only
-    - npm run build
+    - npm run build -- --log-level 1
     - npm run set_tags
     
   publish:
