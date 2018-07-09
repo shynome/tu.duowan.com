@@ -12,7 +12,7 @@ pipeline:
   build:
     image: node:carbon
     commands:
-    - npm i --ignore-scripts
+    - npm i
     - npm run build -- --log-level 1
     - npm run set_tags
     
