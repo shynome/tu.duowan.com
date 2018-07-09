@@ -19,6 +19,9 @@ export const Routes:[ string, any ][] = [
   [ '/gif/:page', AsyncRoute(()=>import('./Gif').then(t=>t.Gif)) ],
   [ '/gif', ()=><Redirect to="/gif/1" /> ],
 
+  [ '/tucao/:page', AsyncRoute(()=>import('./TuCao').then(t=>t.TuCao)) ],
+  [ '/tucao', ()=><Redirect to="/tucao/1" /> ],
+
 ]
 
 export const Router:StatelessComponent<any> = (props)=>{

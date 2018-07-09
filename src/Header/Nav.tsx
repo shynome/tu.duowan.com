@@ -6,6 +6,7 @@ export const Nav:StatelessComponent = ()=>{
     [ '/latest', '首页' ],
     [ '/jiongtu', '囧图' ],
     [ '/gif', 'GIF' ],
+    [ '/tucao', '吐槽' ],
   ].map(([ path, name ])=>{
     return <NavLink to={ path } key={ path } >{ name }</NavLink>
   })
