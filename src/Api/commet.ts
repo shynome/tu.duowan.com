@@ -1,1 +1,2 @@
-const url = `http://comment3.duowan.com/index.php?r=comment/comment&order=time&noimg=true&uniqid=71170caca9d7fb31a3b061bde364f8d2&domain=tu.duowan.com&url=%2Fgallery%2F137221.html&_=1531129807863`
+let url = `http://comment3.duowan.com/index.php?r=comment/comment&order=time&noimg=true&uniqid=71170caca9d7fb31a3b061bde364f8d2&domain=tu.duowan.com&url=%2Fgallery%2F137221.html&_=1531129807863`
+    url = `http://comment3.duowan.com/index.php?r=comment/comment&order=hot&noimg=true&uniqid=71170caca9d7fb31a3b061bde364f8d2&domain=tu.duowan.com&url=%2Fgallery%2F137221.html&_=1531129807864`
