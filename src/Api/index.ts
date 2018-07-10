@@ -33,7 +33,7 @@ export class Api {
     return fetchJsonp(`${this.baseurl}&gid=${id}`).then(t=>t.json())
     .then((res:ImageDetail)=>{
       res.picInfo = res.picInfo.map(item=>{
-        return http2s<Pic>(item,['cover_url','file_url','mp4_url','cmt_url'])
+        return http2s<Pic>(item,['cover_url','file_url','mp4_url','cmt_url','source'])
       })
       return res
     })
