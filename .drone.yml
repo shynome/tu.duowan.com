@@ -26,7 +26,7 @@ pipeline:
     
   publish:
     image: plugins/docker
-    repo: ${DRONE_REPO_NAME}
+    repo: ${DRONE_REPO}
     secrets: [ docker_username, docker_password ]
     dockerfile: docker/Dockerfile
     storage_path: /drone/docker
