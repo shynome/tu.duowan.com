@@ -33,4 +33,5 @@ pipeline:
 
   rebuild-docker-cache:
     <<: *cache
+    mount: [ '/drone/docker' ]
     rebuild: true
