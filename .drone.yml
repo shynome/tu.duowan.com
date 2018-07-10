@@ -10,9 +10,8 @@ pipeline:
     restore: true
 
   install:
-    image: node:carbon
-    commands:
-    - npm i
+    image: shynome/alpine-drone-ci
+    deploy: build node --install-only
   rebuild-node-cache:
     <<: *cache
     mount: [ './node_modules' ]
