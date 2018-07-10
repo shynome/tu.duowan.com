@@ -25,7 +25,7 @@ pipeline:
     
   publish:
     image: plugins/docker
-    repo: shynome/tu.duowan.com
+    repo: ${DRONE_REPO_NAME}
     secrets: [ docker_username, docker_password ]
     dockerfile: docker/Dockerfile
     storage_path: /drone/docker
