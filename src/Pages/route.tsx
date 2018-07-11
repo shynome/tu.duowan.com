@@ -3,7 +3,7 @@ import { Redirect } from "react-router";
 
 import { AsyncRoute } from "../Components";
 
-const Page = AsyncRoute(()=>import('./').then(t=>t.Pages))
+const Page = AsyncRoute(()=>import('.').then(t=>t.Pages))
 import { Name2Tag } from "./data";
 export const PagesRoute = Object.keys(Name2Tag)
 .map(name=>{
