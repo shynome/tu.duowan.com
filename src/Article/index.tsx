@@ -1,17 +1,18 @@
-import { createElement as h, Component, StatelessComponent } from "react";
+import { createElement as h, Component, } from "react";
 import { RouteComponentProps } from "react-router";
-import { Link } from "react-router-dom";
 import { api } from "./service";
 import { ImageDetail } from "../Api/image";
 import { ImageList } from "./ImageList";
+import { PhotoSwipe, Item as PhotoSwipeItem } from "react-photoswipe";
+import "react-photoswipe/lib/photoswipe.css";
 
 export type Props = RouteComponentProps<{ id:string }>
 
-export type State = { data: ImageDetail  }
+export type State = { data: ImageDetail, items: PhotoSwipeItem[]  }
 
 export class Article extends Component< Props, State > {
 
-  state:State = { data:null, }
+  state:State = { data:null, items:null }
   
   componentWillMount(){
     this.getData()
@@ -21,22 +22,32 @@ export class Article extends Component< Props, State > {
 
     const { id } = this.props.match.params
 
-    this.setState({ data: await api.detail(id) })
+    let data = await api.detail(id)
+    let items = data.picInfo.map(pic=>{
+      return {
+        src: pic.source,
+        w: Number(pic.file_width),
+        h: Number(pic.file_height),
+        title: pic.add_intro,
+      } as PhotoSwipeItem
+    })
     
+    this.setState({ data, items })
+    
+  }
+
+  onClose = ()=>{
+    this.props.history.goBack()
+    console.log(6666)
   }
   
   render(){
     
-    const { data } = this.state
+    const { data, items } = this.state
     if( !data ){ 
       return <div>loading</div>
     }else{
-      return <div style={ { margin: '3vw' } }>
-        <button onClick={ ()=>this.props.history.goBack() }>back</button>
-        <h4>{ data.gallery_title }</h4>
-        <ImageList list={ data.picInfo } />
-        <button onClick={ ()=>this.props.history.goBack() }>back</button>
-      </div>
+      return <PhotoSwipe isOpen items={ items } />
     }
   }
 
