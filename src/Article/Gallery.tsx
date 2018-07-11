@@ -40,7 +40,7 @@ export class Gallery extends Component<Props,State> {
     if( !items ){
       return <Loading />
     }else{
-      return  <PhotoSwipe isOpen items={ this.state.items } onClose={ this.props.onClose } />
+      return  <PhotoSwipe isOpen options={ { galleryUID: this.props.id } } items={ this.state.items } onClose={ this.props.onClose } />
     }
   }
 
