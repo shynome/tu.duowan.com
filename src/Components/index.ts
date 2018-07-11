@@ -1,1 +1,1 @@
-export { ImageList } from './ImageList'
+export { AsyncRoute } from './AsyncRoute'

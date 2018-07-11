@@ -5,7 +5,7 @@ import { AsyncRoute } from "./Components/AsyncRoute";
 
 import { NotFound } from "./NotFound";
 import { Article } from "./Article";
-const Page = AsyncRoute(()=>import('./Pages').then(t=>t.Pages))
+import { PagesRoute } from "./Pages/route";
 
 export const Routes:[ string, any ][] = [
 
@@ -13,17 +13,7 @@ export const Routes:[ string, any ][] = [
 
   [ '/404', NotFound ],
 
-  [ '/latest/:page', Page ],
-  [ '/latest', ()=><Redirect to="/latest/1" /> ],
-
-  [ '/jiongtu/:page',Page ],
-  [ '/jiongtu', ()=><Redirect to="/jiongtu/1" /> ],
-
-  [ '/gif/:page', Page ],
-  [ '/gif', ()=><Redirect to="/gif/1" /> ],
-
-  [ '/tucao/:page', Page ],
-  [ '/tucao', ()=><Redirect to="/tucao/1" /> ],
+  ...PagesRoute,
 
   [ '/article/:id', Article ],
   [ '/article/', ()=><Redirect to="/" /> ],

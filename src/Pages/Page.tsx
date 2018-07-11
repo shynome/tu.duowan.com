@@ -1,7 +1,7 @@
 import { createElement as h, Component, CSSProperties,  } from "react";
 import { RouteComponentProps } from "react-router";
 import { Api, ImageList as ImageListType } from "../Api";
-import { ImageList } from "../Components/ImageList";
+import { ImageList } from "./ImageList";
 import { Link } from "react-router-dom";
 
 export type Props = RouteComponentProps<{ page:string }> & { api:Api }
