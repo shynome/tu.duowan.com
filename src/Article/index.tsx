@@ -20,16 +20,12 @@ export class Article extends Component< Props, State > {
   async getData(){
 
     const { id } = this.props.match.params
-    
-    console.log(this.props.match.params.id)
 
     this.setState({ data: await api.detail(id) })
     
   }
   
   render(){
-
-    console.log(this.props.match.params.id)
     
     const { data } = this.state
     if( !data ){ 
