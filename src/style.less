@@ -91,7 +91,7 @@ ul.image_list{
     box-shadow: 0px 0px 1px @borderColor;
   }
   header {
-    padding: @margin @margin @margin*2;
+    padding: @margin/2 @margin/2 @margin*1.5;
     margin: 0 0 @margin;
     border-bottom: 1px solid @borderColor;
     nav {
@@ -99,11 +99,8 @@ ul.image_list{
       a {
         display: inline-block;
         padding: 5px 10px;
-        margin: 0 5px;
-        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.7);
-        &:first-child{
-          margin-left: 0;
-        }
+        margin: @margin/2;
+        border: 1px solid @borderColor;
         &.active{
           background: yellow;
         }
