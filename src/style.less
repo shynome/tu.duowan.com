@@ -2,6 +2,7 @@ a{
   text-decoration: none;
   color: #000;
 }
+
 ul{
   list-style: none;
   margin: 0;
@@ -53,10 +54,16 @@ ul.image_list{
   padding: 0 0 1px;
   li{
     display: inline-block;
-    @w: 44vw;
+    @w: 40vw;
     width: @w;
     vertical-align: top;
     margin: @margin;
+    padding: @margin;
+    box-shadow: 0 0 1px @borderColor;
+    transition: all 0.7s;
+    &:hover{
+      box-shadow: 0 0 5px 3px @borderColor;
+    }
     &>a{
       display: block;
     }
@@ -68,7 +75,7 @@ ul.image_list{
     }
     .title{
       font-size: 14px;
-      margin: 1vw 0;
+      margin: @margin 0;
     }
     .info{
       text-align: right;
