@@ -8,25 +8,44 @@ ul{
   padding: 0;
 }
 
-header {
-  nav {
-    // text-align: center;
-    padding: 5px 5px;
-    display: block;
-    a {
-      display: inline-block;
-      padding: 5px 10px;
-      margin: 0 5px;
-      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.7);
-      &:first-child{
-        margin-left: 0;
-      }
-      &.active{
-        background: yellow;
-      }
+#loading .progress-bar{
+  background: rgba(138, 138, 138, 0.3);
+  position: fixed; 
+  left: 0;
+  top: 0;
+  width: 90%;
+  height: 1vw;
+  text-indent: -9999em;
+  animation: progress 5s linear;
+  @keyframes progress {
+    from{
+      width: 0%;
+    }
+    to{
+      width: 90%
     }
   }
+  @keyframes finish {
+    0% {
+      opacity: 1;
+      visibility: visible;
+    }
+    100% {
+      width: 100%;
+      opacity: 0;
+    }
+  }
+  &.finished{
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    animation: finish 1s linear;
+    // transition: width 0.7s linear, opacity 0.3s 0.4s linear, visibility 0s 0.7s linear;
+  }
 }
+
+@margin: 2vw;
+@borderColor: rgba(0, 0, 0, 0.2);
 
 ul.image_list{
   list-style: none;
@@ -34,20 +53,22 @@ ul.image_list{
   padding: 0 0 1px;
   li{
     display: inline-block;
-    width: 50%;
+    @w: 44vw;
+    width: @w;
     vertical-align: top;
+    margin: @margin;
     &>a{
       display: block;
-      padding: 10px;
     }
     .image{
-      height: 40vw;
-      width: 40vw;
+      height: @w;
+      width: @w;
       margin: 0 auto;
       background: cover center;
     }
     .title{
       font-size: 14px;
+      margin: 1vw 0;
     }
     .info{
       text-align: right;
@@ -55,6 +76,37 @@ ul.image_list{
       color: rgb(161, 161, 161);
       .comment_count{
         float: left;
+      }
+    }
+  }
+}
+
+.page{
+  padding: @margin;
+  .btn{
+    display: block;
+    text-align: center;
+    margin: @margin*2 @margin;
+    padding: 10px 0;
+    box-shadow: 0px 0px 1px @borderColor;
+  }
+  header {
+    padding: @margin @margin @margin*2;
+    margin: 0 0 @margin;
+    border-bottom: 1px solid @borderColor;
+    nav {
+      display: block;
+      a {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 0 5px;
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.7);
+        &:first-child{
+          margin-left: 0;
+        }
+        &.active{
+          background: yellow;
+        }
       }
     }
   }

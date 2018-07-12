@@ -22,7 +22,7 @@ export class Gallery extends Component<Props,State> {
     this.getData()
   }
   
-  async getData(){
+  getData = async ()=>{
     const data = await api.detail(this.props.id)
     const items = data.picInfo.map(pic=>{
       return {
@@ -40,10 +40,11 @@ export class Gallery extends Component<Props,State> {
     if( !items ){
       return <Loading />
     }else{
-      return  <PhotoSwipe isOpen options={ { galleryUID: this.props.id } } items={ this.state.items } onClose={ this.props.onClose } />
+      return <div>
+        <Loading finished/>
+        <PhotoSwipe isOpen options={ { galleryUID: this.props.id, closeOnVerticalDrag: false  } } items={ this.state.items } onClose={ this.props.onClose } />
+      </div>
     }
   }
 
-
-  
 }

@@ -12,7 +12,7 @@ export const Pages:StatelessComponent<RouteComponentProps<any>> = (props)=>{
     return <Redirect to="/404"></Redirect>
   }
   let tag = Name2Tag[path].tag
-  return <div>
+  return <div className="page">
     <header>
       <Nav />
     </header>

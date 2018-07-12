@@ -1,5 +1,5 @@
 import { createElement as h, Component, StatelessComponent } from "react";
-import { RouteComponentProps } from "react-router";
+import { Loading } from "./Loading";
 
 export type State = { 
   loaded: boolean
@@ -32,9 +32,7 @@ export class AsyncRouteComponent extends Component<Props,State> {
       
     }else{
 
-      return <div>
-        loading
-      </div>
+      return <Loading />
       
     }
     
