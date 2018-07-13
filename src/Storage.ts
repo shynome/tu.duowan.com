@@ -11,7 +11,9 @@ export class Storage<T=any> {
   limit:number
   storage_name:string
   
-  constructor(storage_name:string=required('storage name'),limit:number=200){
+  constructor(storage_name:string,limit:number=200){
+
+    storage_name = storage_name || required('storage name')
 
     // check
     let lastVal = localStorage.getItem(storage_name)
