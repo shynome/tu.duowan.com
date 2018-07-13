@@ -1,11 +1,13 @@
 import { createElement as h, Component } from "react";
-import { PhotoSwipe, Item as PhotoSwipeItem } from "react-photoswipe";
+import { PhotoSwipe, Item as PhotoSwipeItem, } from "react-photoswipe";
 import { api } from "./service";
 import { ImageDetail } from "../Api/image";
 import { Loading } from "../Components";
+import { Storage } from "../Storage";
 
 export type Props = {
-  id: string,
+  id: string
+  index: string
   onClose: Function
 }
 
@@ -13,6 +15,8 @@ export type State = {
   items: PhotoSwipeItem[]
   data: ImageDetail
 }
+
+export const storage = new Storage('article_view_history')
 
 export class Gallery extends Component<Props,State> {
 
@@ -34,6 +38,11 @@ export class Gallery extends Component<Props,State> {
     })
     this.setState({ items, data })
   }
+
+  setLastViewIndex = (pswp:PhotoSwipe)=>{
+    const index = pswp.getCurrentIndex()
+    storage.set(this.props.id,index)
+  }
   
   render(){
     const { items } = this.state
@@ -42,7 +51,7 @@ export class Gallery extends Component<Props,State> {
     }else{
       return <div>
         <Loading finished/>
-        <PhotoSwipe isOpen options={ { galleryUID: this.props.id, } } items={ this.state.items } onClose={ this.props.onClose } />
+        <PhotoSwipe isOpen afterChange={ this.setLastViewIndex } options={ { galleryUID: this.props.id } } items={ this.state.items } onClose={ this.props.onClose } />
       </div>
     }
   }
