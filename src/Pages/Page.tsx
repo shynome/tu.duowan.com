@@ -3,6 +3,7 @@ import { RouteComponentProps } from "react-router";
 import { Api, ImageList as ImageListType } from "../Api";
 import { ImageList, AsyncRoute, Loading } from "../Components";
 import { Link } from "react-router-dom";
+import { Props as GalleryProps } from "../Article/Gallery";
 
 export type Props = RouteComponentProps<{ page:string }> & { api:Api }
 
@@ -35,7 +36,7 @@ export class Page extends Component< Props, State > {
     this.setState({ gallery_id:null })
   }
 
-  Gallery = AsyncRoute(()=>import('../Article/Gallery').then(m=>m.Gallery))
+  Gallery:StatelessComponent<GalleryProps> = AsyncRoute(()=>import('../Article/Gallery').then(m=>m.Gallery))
   
   render(){
     let { page } = this.props.match.params
@@ -47,6 +48,7 @@ export class Page extends Component< Props, State > {
       const { Gallery } = this
       return <div>
         <Loading finished />
+
         { gallery_id && <Gallery id={ gallery_id } onClose={ this.onCloseGallery } ></Gallery> }
 
         {num > 1 && <Link className={'btn'} to={ this.props.match.path.replace(':page',`${num-1}`) }>上一页</Link>}

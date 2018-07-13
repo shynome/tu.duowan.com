@@ -59,8 +59,11 @@ ul.image_list{
     vertical-align: top;
     margin: @margin;
     padding: @margin;
-    box-shadow: 0 0 1px @borderColor;
+    box-shadow: 0 0 2px 1px @borderColor;
     transition: all 0.7s;
+    &.visited{
+      box-shadow: 0 0 0px 1px @borderColor;
+    }
     &:hover{
       box-shadow: 0 0 5px 3px @borderColor;
     }

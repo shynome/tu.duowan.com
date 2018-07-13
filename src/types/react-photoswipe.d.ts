@@ -36,12 +36,13 @@ declare module 'react-photoswipe' {
     options?: { [k in keyof Options]?: Options[k] }
     onClose?: Function
     id?: string
-    beforeChange?: (pswp:PhotoSwipe)=>any
-    afterChange?: (pswp:PhotoSwipe)=>any
+    beforeChange?: (pswp:pswp)=>any
+    afterChange?: (pswp:pswp)=>any
   }
-
-  export class PhotoSwipe extends React.Component<Props> {
+  interface pswp {
     getItemAt():Item
     getCurrentIndex():number
   }
+
+  export class PhotoSwipe extends React.Component<Props> {}
 }
