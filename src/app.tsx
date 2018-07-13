@@ -1,13 +1,14 @@
 import ReactDOM from 'react-dom'
 import { createElement as h } from 'react'
-import { Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import { SwitchRouter } from "./router";
-import { history } from "./history";
+
+window.addEventListener('load',()=>import('./track'))
 
 ReactDOM.render(
-  <Router history={ history } >
+  <BrowserRouter>
     <SwitchRouter/>
-  </Router>,
+  </BrowserRouter>,
   document.getElementById('app'),
 )
