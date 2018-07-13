@@ -17,7 +17,7 @@ export class Storage<T=any> {
 
     // check
     let lastVal = localStorage.getItem(storage_name)
-    if( lastVal !== null && lastVal[0] === '[' ){
+    if( lastVal !== null && lastVal[0] !== '[' ){
       throw new Error(`storage name ${storage_name} is exist`)
     }
     
