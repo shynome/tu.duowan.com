@@ -20,7 +20,7 @@ export const Routes:[ string, any ][] = [
 
 ]
 
-export const Router:StatelessComponent<any> = (props)=>{
+export const SwitchRouter:StatelessComponent<any> = (props)=>{
   const RouteMaps = Routes.map( ([path, Component ])=>{
     return <Route exact key={ path } path={ path } component={ Component } />
   } )

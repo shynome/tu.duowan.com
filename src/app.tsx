@@ -1,12 +1,13 @@
 import ReactDOM from 'react-dom'
 import { createElement as h } from 'react'
-import { BrowserRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
 
-import { Router } from "./router";
+import { SwitchRouter } from "./router";
+import { history } from "./history";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Router/>
-  </BrowserRouter>,
+  <Router history={ history } >
+    <SwitchRouter/>
+  </Router>,
   document.getElementById('app'),
 )
