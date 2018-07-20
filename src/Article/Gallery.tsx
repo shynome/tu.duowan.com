@@ -1,5 +1,5 @@
 import { createElement as h, Component } from "react";
-import { PhotoSwipe, Item as PhotoSwipeItem, pswp, Options } from "react-photoswipe";
+import { PhotoSwipe, Item as PhotoSwipeItem, pswp, Props } from "react-photoswipe";
 import { api, storage } from "./service";
 import { ImageDetail } from "../Api/image";
 import { Loading } from "../Components";
@@ -39,15 +39,32 @@ export class Gallery extends Component<Props,State> {
     const index = pswp.getCurrentIndex()
     storage.set(this.props.id,index)
   }
+
+  getDoubleTapZoom:Props['options']['getDoubleTapZoom'] = (isMouseClick,item)=>{
+    let h = window.screen.height/item.h
+    let w = window.screen.width/item.w
+    let x = 0
+    if(w<1 && w>h){
+      x = w
+    }else{
+      x = 1.5
+    }
+    return x
+  }
   
   render(){
     const { items } = this.state
     if( !items ){
       return <Loading />
     }else{
+      let options:Props['options'] = {
+        galleryUID: this.props.id,
+        index: storage.get(this.props.id), 
+        getDoubleTapZoom: this.getDoubleTapZoom
+      }
       return <div>
         <Loading finished/>
-        <PhotoSwipe isOpen afterChange={ this.setLastViewIndex } options={ { galleryUID: this.props.id, index: storage.get(this.props.id)  } } items={ this.state.items } onClose={ this.props.onClose } />
+        <PhotoSwipe isOpen afterChange={ this.setLastViewIndex } options={ options } items={ this.state.items } onClose={ this.props.onClose } />
       </div>
     }
   }

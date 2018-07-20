@@ -21,6 +21,7 @@ declare module 'react-photoswipe' {
     getThumbBoundsFn: (index:number)=>ThumbBounds
     galleryUID: string
     pinchToClose: boolean
+    getDoubleTapZoom: (isMouseClick:boolean,item:Item)=>number
     /**
      * If set to false disables history module (back button to close gallery, unique URL for each slide). You can also just exclude history.js module from your build.
      */
