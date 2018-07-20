@@ -3,7 +3,7 @@ xcache: &cache
   mount: [ '/drone/docker', './node_modules' ]
   volumes: [ '/tmp/cache:/cache' ]
 ssh_conf: &ssh_conf
-  image: 1
+  image: shynome/alpine-drone-ci
   secrets: [ ssh_key ]
   ssh_conf: |
     Host *
