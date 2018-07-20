@@ -11,6 +11,7 @@ pipeline:
 
   install:
     image: node:carbon
+    volumes: [ "npm:/root/.npm" ]
     commands:
     - npm i
   rebuild-node-cache:
