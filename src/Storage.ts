@@ -42,6 +42,10 @@ export class Storage<T=any> {
     localStorage.setItem(this.storage_name,JSON.stringify(this.data))
   }
 
+  has = (id:string)=>{
+    return this.data.filter(item=>item.id===id).length!==0
+  }
+
   get = (id:string)=>{
     let item = this.data.filter(item=>item.id===id)[0]
     return item && item.val || null
