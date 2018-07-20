@@ -12,3 +12,5 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('app'),
 )
+
+// new Worker('./work.ts')
