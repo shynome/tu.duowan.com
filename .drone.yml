@@ -2,6 +2,15 @@ xcache: &cache
   image: drillster/drone-volume-cache
   mount: [ '/drone/docker', './node_modules' ]
   volumes: [ '/tmp/cache:/cache' ]
+ssh_conf: &ssh_conf
+  image: 1
+  secrets: [ ssh_key ]
+  ssh_conf: |
+    Host *
+      User root
+      StrictHostKeyChecking no
+    Host tu.wsl.fun
+      HostName 42.159.134.18
 
 pipeline:
 
@@ -31,6 +40,10 @@ pipeline:
     secrets: [ docker_username, docker_password ]
     dockerfile: docker/Dockerfile
     storage_path: /drone/docker
+
+  deploy:
+    <<: *ssh_conf
+    deploy: docker to tu.wsl.fun core_tu ${DRONE_REPO}
 
   rebuild-docker-cache:
     <<: *cache
