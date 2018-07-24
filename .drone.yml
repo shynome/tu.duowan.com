@@ -10,7 +10,8 @@ ssh_conf: &ssh_conf
       User root
       StrictHostKeyChecking no
     Host tu.wsl.fun
-      HostName 42.159.134.18
+      HostName 176.122.180.146
+      Port 28071
 
 pipeline:
 
@@ -21,9 +22,7 @@ pipeline:
   install:
     image: shynome/alpine-drone-ci
     volumes: [ "npm:/root/.npm" ]
-    commands:
-    - echo $DRONE_PREV_COMMIT_SHA 
-    - deploy build node --install-only
+    deploy: build node --install-only
   rebuild-node-cache:
     <<: *cache
     mount: [ './node_modules' ]
@@ -41,12 +40,13 @@ pipeline:
     secrets: [ docker_username, docker_password ]
     dockerfile: docker/Dockerfile
     storage_path: /drone/docker
+  rebuild-docker-cache:
+    <<: *cache
+    mount: [ '/drone/docker' ]
+    rebuild: true
 
   deploy:
     <<: *ssh_conf
     deploy: docker to tu.wsl.fun core_tu ${DRONE_REPO}
 
-  rebuild-docker-cache:
-    <<: *cache
-    mount: [ '/drone/docker' ]
-    rebuild: true
+
