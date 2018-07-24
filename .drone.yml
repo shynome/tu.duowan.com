@@ -21,7 +21,9 @@ pipeline:
   install:
     image: shynome/alpine-drone-ci
     volumes: [ "npm:/root/.npm" ]
-    deploy: build node --install-only
+    commands:
+    - echo $DRONE_PREV_COMMIT_SHA 
+    - deploy build node --install-only
   rebuild-node-cache:
     <<: *cache
     mount: [ './node_modules' ]
